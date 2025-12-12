@@ -1,8 +1,14 @@
 @import 'tailwindcss';
 
+@plugin '@tailwindcss/typography';
+
 @import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
+
+@utility field-sizing-fixed {
+  field-sizing: fixed;
+}
 
 body {
   @apply m-0;
