@@ -14,10 +14,15 @@ export const Route = createFileRoute('/write')({
 
 function RouteComponent() {
   return (
-    <div className="flex flex-col h-[calc(100vh-73px)]">
-      <Toolbar />
-      <div className="flex-1 overflow-hidden">
-        <ResizablePanelGroup direction="horizontal" className="h-full w-full">
+    <div className="flex flex-col">
+      <div className="sticky top-0 z-10 bg-background">
+        <Toolbar />
+      </div>
+      <div className="min-h-[calc(100vh-53px)]">
+        <ResizablePanelGroup
+          direction="horizontal"
+          className="min-h-[calc(100vh-53px)] w-full items-stretch h-auto"
+        >
           <ResizablePanel defaultSize={50} minSize={30}>
             <EditorPane />
           </ResizablePanel>

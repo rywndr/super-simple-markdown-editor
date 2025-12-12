@@ -4,6 +4,8 @@ import { ModeToggle } from './mode-toggle'
 export default function Header() {
   const location = useLocation()
   const isWritePage = location.pathname === '/write'
+  const isLearnPage = location.pathname === '/learn'
+  const isAboutPage = location.pathname === '/about'
 
   return (
     <header className="border-b">
@@ -20,34 +22,70 @@ export default function Header() {
                 >
                   ~
                 </Link>
-                <span>/write</span>
+                /write
+              </>
+            ) : isLearnPage ? (
+              <>
+                <Link
+                  to="/"
+                  className="rounded hover:underline hover:opacity-90 transition-opacity"
+                  aria-label="Home"
+                >
+                  ~
+                </Link>
+                /learn
+              </>
+            ) : isAboutPage ? (
+              <>
+                <Link
+                  to="/"
+                  className="rounded hover:underline hover:opacity-90 transition-opacity"
+                  aria-label="Home"
+                >
+                  ~
+                </Link>
+                /about
               </>
             ) : (
-              <Link
-                to="/"
-                className="rounded hover:opacity-90 transition-opacity"
-                aria-label="Home"
-              >
-                ~
-              </Link>
+              <>
+                <Link
+                  to="/"
+                  className="rounded hover:opacity-90 transition-opacity"
+                  aria-label="Home"
+                >
+                  ~
+                </Link>
+                /
+              </>
             )}
           </div>
 
-          {!isWritePage && (
-            <ul className="flex items-center gap-6 flex-1">
-              <li>
-                <Link
-                  to="/write"
-                  className="text-lg font-bold hover:underline underline-offset-4 transition-all"
-                >
-                  Start Writing
-                </Link>
-              </li>
-            </ul>
-          )}
-
-          {/* theme toggle */}
-          <div className="ml-auto">
+          <div className="flex items-center gap-6 ml-auto">
+            {!isWritePage && (
+              <Link
+                to="/write"
+                className="text-2xl font-mono font-bold hover:underline underline-offset-4 transition-all"
+              >
+                write
+              </Link>
+            )}
+            {!isLearnPage && (
+              <Link
+                to="/learn"
+                className="text-2xl font-mono font-bold hover:underline underline-offset-4 transition-all"
+              >
+                learn
+              </Link>
+            )}
+            {!isAboutPage && (
+              <Link
+                to="/about"
+                className="text-2xl font-mono font-bold hover:underline underline-offset-4 transition-all"
+              >
+                about
+              </Link>
+            )}
+            {/* theme toggle */}
             <ModeToggle />
           </div>
         </nav>
